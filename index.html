@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ענת ומתן</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ff9999, #ff3333);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            cursor: pointer;
+            max-width: 300px;
+            transition: transform 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        #info {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #info p {
+            color: blue;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        #clock {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <h1>ענת ומתן</h1>
+    <h3>לפרטים נוספים לחצו על הפנים</h3>
+    <img src="ענת ומתן.JPG" alt="תמונה של ענת ומתן" onclick="toggleInfo()">
+    <div id="info">
+        <h2>מידע על ענת ומתן</h2>
+        <p>
+            ענת היא אמא של מתן והיא מתה עליו.<br>
+            הם אוהבים לנסות דברים חדשים בבינה מלאכותית וללמוד מיומנויות חדשות.<br>
+            ענת ומתן עושים גם דברים מדליקים יחד!
+        </p>
+    </div>
+    
+   
+
+    <button id="backToTop" onclick="scrollToTop()">חזרה למעלה</button>
+
+    <script>
+        function toggleInfo() {
+            var info = document.getElementById("info");
+            if (info.style.display === "none") {
+                info.style.display = "block";
+            } else {
+                info.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        window.onscroll = function() {
+            var backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        function updateClock() {
+            var now = new Date();
+            var clockDiv = document.getElementById("clock");
+            clockDiv.textContent = now.toLocaleString('he-IL');
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // קריאה ראשונית
+    </script>
+</body>
+</html>
